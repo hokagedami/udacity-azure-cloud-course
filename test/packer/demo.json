@@ -1,14 +1,9 @@
 {
-  "variables": {
-    "client_id": "",
-    "client_secret": "",
-    "subscription_id": ""
-  },
+  "variables": { },
   "builders": [{
     "type": "azure-arm",
-
-    "client_id": "1025cf54-358d-49a9-ae54-9f44e51c3b11",
-    "client_secret": "umX8Q~K8gR9-rWG8jpu1YO3RohjoNa6jOz5X3aaz",
+    "client_id": "c3674fc8-35ad-4adc-af82-9b8485a98a31",
+    "client_secret": "HNM8Q~mF_ixh_sjExTRyCN0CkUKGkm690h4jNaET",
     "subscription_id": "4aef544d-c9f3-4457-bb95-c5ac96af0026",
 
     "os_type": "Linux",
@@ -19,7 +14,7 @@
     "managed_image_resource_group_name": "udacity-rg",
     "managed_image_name": "myPackerImage",
 
-    "location": "East US",
+    "location": "North Europe",
     "vm_size": "Standard_B1s"
   }],
   "provisioners": [{
