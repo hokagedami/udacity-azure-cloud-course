@@ -6,9 +6,9 @@
   },
   "builders": [{
     "type": "azure-arm",
-
-    "client_id": "1025cf54-358d-49a9-ae54-9f44e51c3b11",
-    "client_secret": "umX8Q~K8gR9-rWG8jpu1YO3RohjoNa6jOz5X3aaz",
+    "client_id": "9eb3903c-ee78-4765-8613-43f872c27b0e",
+    "client_secret": "msU8Q~5f85ChxUlyw_lo_smE3Y1sg7Rddva5bb0P",
+    "tenant_id": "7286e02e-8c12-46db-a425-a1cbd80e000e",
     "subscription_id": "4aef544d-c9f3-4457-bb95-c5ac96af0026",
 
     "os_type": "Linux",
@@ -17,16 +17,20 @@
     "image_sku": "18.04-LTS",
 
     "managed_image_resource_group_name": "udacity-rg",
-    "managed_image_name": "myPackerImage",
-
-    "location": "East US",
+    "managed_image_name": "udacityPackerImage",
+    "azure_tags": {
+      "dept": "Engineering",
+      "task": "Image deployment",
+      "image_name": "udacityPackerImage"
+    },
+    "location": "North Europe",
     "vm_size": "Standard_B1s"
   }],
   "provisioners": [{
     "inline": [
-        "apt-get update",
-        "apt-get upgrade -y"
-    ],
+			"echo 'Hello, World!' > index.html",
+			"nohup busybox httpd -f -p 80 &"
+		],
     "inline_shebang": "/bin/sh -x",
     "type": "shell",
     "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"

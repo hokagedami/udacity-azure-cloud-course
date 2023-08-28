@@ -1,5 +1,6 @@
 variable "prefix" {
   description = "The prefix should be used for all resources in this example"
+  default = "udacity-vm"
 }
 variable "location" {
   description = "The Azure region in which all resources in this example should be created"
