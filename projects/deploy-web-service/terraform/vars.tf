@@ -14,7 +14,7 @@ variable "location" {
 }
 
 variable "image-id" {
-  default = "/subscriptions/4aef544d-c9f3-4457-bb95-c5ac96af0026/resourceGroups/UDACITY-RG/providers/Microsoft.Compute/images/udacityPackerImage"
+  default = "/subscriptions/<subscription_ID>/resourceGroups/UDACITY-RG/providers/Microsoft.Compute/images/udacityPackerImage"
   description = "The ID of the image to use for the virtual machine"
 }
 
