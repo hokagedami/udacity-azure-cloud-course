@@ -31,27 +31,51 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = azurerm_resource_group.rg.name
 
   security_rule {
-    name                       = "allow-internal"
-    priority                   = 100
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "*"
-    source_port_range          = "*"
-    destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = azurerm_subnet.subnet.address_prefixes[0]
+    name                        = "deny-internet"
+    priority                    = 100
+    direction                   = "Inbound"
+    access                      = "Deny"
+    protocol                    = "*"
+    source_port_range           = "*"
+    destination_port_range      = "*"
+    source_address_prefix       = "Internet"
+    destination_address_prefix  = "*"
   }
 
   security_rule {
-    name                       = "deny-external"
-    priority                   = 120
-    direction                  = "Inbound"
-    access                     = "Deny"
-    protocol                   = "*"
-    source_port_range          = "*"
-    destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
+    name                        = "allow-vnet-inbound"
+    priority                    = 110
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "*"
+    source_port_range           = "*"
+    destination_port_range      = "*"
+    source_address_prefix       = azurerm_virtual_network.vnet.address_space[0]
+    destination_address_prefix  = azurerm_virtual_network.vnet.address_space[0]
+  }
+
+  security_rule {
+    name                        = "allow-vnet-outbound"
+    priority                    = 120
+    direction                   = "Outbound"
+    access                      = "Allow"
+    protocol                    = "*"
+    source_port_range           = "*"
+    destination_port_range      = "*"
+    source_address_prefix       = azurerm_virtual_network.vnet.address_space[0]
+    destination_address_prefix  = azurerm_virtual_network.vnet.address_space[0]
+  }
+
+  security_rule {
+    name                        = "allow-lb-http"
+    priority                    = 130
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "Tcp"
+    source_port_range           = "*"
+    destination_port_range      = "80"
+    source_address_prefix       = azurerm_public_ip.publicip.ip_address
+    destination_address_prefix  = "*"
   }
 }
 

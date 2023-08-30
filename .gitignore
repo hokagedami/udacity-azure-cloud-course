@@ -133,3 +133,7 @@ fabric.properties
 /projects/deploy-web-service/deploy-web-service.zip
 /projects/deploy-web-service/terraform/.terraform.lock.hcl
 /lessons/file.txt
+
+
+**other.json
+**.plan
