@@ -16,6 +16,3 @@ jobs:
 
     - name: Run make command in ci folder
       run: cd lessons/ci/ && make hello
-
-    - name: Run make command in make folder
-      run: cd ../make/ && make hello
