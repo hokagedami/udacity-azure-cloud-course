@@ -14,5 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Run make command
-      run: make hello
+    - name: Run make command in ci folder
+      run: cd lessons/ci/ && make hello
+
+    - name: Run make command in make folder
+      run: cd ../make && make hello
